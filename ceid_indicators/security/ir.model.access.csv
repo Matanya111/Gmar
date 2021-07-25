@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l1ght_package_site_customer,l1ght.site.customer,model_l1ght_site,l1ght_package.group_l1ght_customer,1,1,0,0
+access_l1ght_package_site_internal,l1ght.site,model_l1ght_site,l1ght_package.group_l1ght_internal,1,1,0,0
+access_l1ght_package_site_admin,l1ght.site,model_l1ght_site,l1ght_package.group_l1ght_admin,1,1,1,1
+access_l1ght_package_site_scan_customer,l1ght.site.scan,model_l1ght_site_scan,l1ght_package.group_l1ght_customer,1,0,0,0
+access_l1ght_package_site_scan_internal,l1ght.site.scan,model_l1ght_site_scan,l1ght_package.group_l1ght_internal,1,0,0,0
+access_l1ght_package_site_scan_admin,l1ght.site.scan,model_l1ght_site_scan,l1ght_package.group_l1ght_admin,1,1,1,1
+access_l1ght_package_site_scan_analysis_customer,l1ght.site.scan.analysis,model_l1ght_site_scan_analysis,l1ght_package.group_l1ght_customer,1,0,0,0
+access_l1ght_package_site_scan_analysis_internal,l1ght.site.scan.analysis,model_l1ght_site_scan_analysis,l1ght_package.group_l1ght_internal,1,0,0,0
+access_l1ght_package_site_scan_analysis_admin,l1ght.site.scan.analysis,model_l1ght_site_scan_analysis,l1ght_package.group_l1ght_admin,1,1,1,1
+access_l1ght_package_site_collection_customer,l1ght.site.collection,model_l1ght_site_collection,l1ght_package.group_l1ght_customer,1,0,0,0
+access_l1ght_package_site_collection_internal,l1ght.site.collection,model_l1ght_site_collection,l1ght_package.group_l1ght_internal,1,0,0,0
+access_l1ght_package_site_collection_admin,l1ght.site.collection,model_l1ght_site_collection,l1ght_package.group_l1ght_admin,1,1,1,1
