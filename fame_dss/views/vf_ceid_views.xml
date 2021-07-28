@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- record create: form -->
+        <record id="vf_ceid_form" model="ir.ui.view">
+            <field name="name">vf_ceid_form</field>
+            <field name="model">vf.ceid</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="area"/>
+                            <field name="ceid"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- schema: tree  -->
+        <record id="vf_ceid_tree" model="ir.ui.view">
+            <field name="name">vf_ceid.tree</field>
+            <field name="model">vf.ceid</field>
+            <field name="arch" type="xml">
+
+                <tree>
+                    <field name="area"/>
+                    <field name="ceid"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- ???: action (form & tree) -->
+        <record id="vf_ceid_action" model="ir.actions.act_window">
+            <field name="name">vf ceid</field>
+
+            <field name="res_model">vf.ceid</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="context" eval="{'search_default_my_certificates': 1}"/>
+            <field name="help" type="html">
+
+                <p class="oe_view_nocontent_create">Create the first record</p>
+
+            </field>
+        </record>
+    </data>
+
+        <!-- menu item app: name and action -->
+        <menuitem id="menu_vf_ceid"
+            name="vf ceid"
+            action="vf_ceid_action"
+            sequence="100"
+        />
+</odoo>

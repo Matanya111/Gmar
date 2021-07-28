@@ -1,3 +1,5 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_fame_dss,access.fame.dss,model_project_list,base.group_system,1,1,1,1
-access_fame_dss_1,access.fame.dss.1,model_ceid_list,base.group_system,1,1,1,1
+access_fame_dss,access.fame.dss,model_ceid_list,base.group_system,1,1,1,1
+access_fame_dss_1,access.fame.dss.1,model_project_list,base.group_system,1,1,1,1
+access_fame_dss_2,access.fame.dss.2,model_restrictive_tool,base.group_system,1,1,1,1
+access_fame_dss_3,access.fame.dss.3,model_vf_ceid,base.group_system,1,1,1,1
