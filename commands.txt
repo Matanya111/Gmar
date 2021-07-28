@@ -1,2 +1,1 @@
-
  ./odoo/odoo-bin -r odoo_matanya -w 9790311mv --addons-path=odoo/addons,custom/Gmar -d odoo-18-7

@@ -1,16 +1,15 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'EDI for Israel',
+    'name': 'fame_dss',
     'version': '0.1',
-    'summary': 'Electronic Invoicing for Israel',
+    'summary': 'GMAR_project',
     'category': 'Localization',
-'description': """
-    """,
+    'description': """""",
     'depends': [
     ],
-    "data": [
-        'security/ir.model.access.csv',
-        'views/l10n_il_edi_certificate_views.xml',
+    "data": ['security/ir.model.access.csv',
+        'views/ceid_list_views.xml',
+        'views/project_list_views.xml'
     ],
     'installable': True,
     'application': True,
