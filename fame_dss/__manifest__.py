@@ -11,7 +11,9 @@
         'views/ceid_list_views.xml',
         'views/project_list_views.xml',
         'views/restrictive_tool_views.xml',
-        'views/vf_ceid_views.xml'
+        'views/vf_ceid_views.xml',
+        'views/execl_1_views.xml',
+        'views/execl_2_views.xml'
     ],
     'installable': True,
     'application': True,

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- record create: form -->
+        <record id="execl_2_form" model="ir.ui.view">
+            <field name="name">execl_2_form</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="AREA"/>
+                            <field name="CEID"/>
+                            <field name="MOM"/>
+                            <field name="CHAMBER"/>
+                            <field name="WW"/>
+                            <field name="STATUS"/>
+                            <field name="TIME"/>
+                        
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- schema: tree  -->
+        <record id="execl_2_tree" model="ir.ui.view">
+            <field name="name">execl_2.tree</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+
+                <tree>
+                    <field name="AREA"/>
+                    <field name="CEID"/>
+                    <field name="MOM"/>
+                    <field name="CHAMBER"/>
+                    <field name="WW"/>
+                    <field name="STATUS"/>
+                    <field name="TIME"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- ???: action (form & tree) -->
+        <record id="execl_2_action" model="ir.actions.act_window">
+            <field name="name">execl 2</field>
+
+            <field name="res_model">execl.2</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="context" eval="{'search_default_my_certificates': 1}"/>
+            <field name="help" type="html">
+
+                <p class="oe_view_nocontent_create">Create the first record</p>
+
+            </field>
+        </record>
+    </data>
+
+        <!-- menu item app: name and action -->
+        <menuitem id="menu_execl_2"
+            name="execl 2"
+            action="execl_2_action"
+            sequence="100"
+        />
+</odoo>

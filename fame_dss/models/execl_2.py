@@ -3,18 +3,17 @@
 
 from odoo import _, api, fields, models, tools
 
-class project_list(models.Model):
-    _name = 'project.list'
-    _description = 'projects monitoring list'
+class execl_2(models.Model):
+    _name = 'execl.2'
+    _description = 'down time execl'
 
-    area = fields.Char()
-    ceid = fields.Char()
-    project_name = fields.Char()
-    project_start_date = fields.Char()
-    project_end_date = fields.Char()
-    summary_and_decisions = fields.Char()
-    eng = fields.Char()
-    last_update = fields.Char()
+    AREA = fields.Char()
+    CEID = fields.Char()
+    MOM = fields.Char()
+    CHAMBER = fields.Char()
+    WW = fields.Char()
+    STATUS = fields.Char()
+    TIME = fields.Char()
 
 #    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
 #    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")

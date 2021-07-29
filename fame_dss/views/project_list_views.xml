@@ -15,6 +15,7 @@
                             <field name="ceid"/>
                             <field name="project_name"/>
                             <field name="project_start_date"/>
+                            <field name="project_end_date"/>
                             <field name="summary_and_decisions"/>
                             <field name="eng"/>
                             <field name="last_update"/>
@@ -35,6 +36,7 @@
                     <field name="ceid"/>
                     <field name="project_name"/>
                     <field name="project_start_date"/>
+                    <field name="project_end_date"/>
                     <field name="summary_and_decisions"/>
                     <field name="eng"/>
                     <field name="last_update"/>

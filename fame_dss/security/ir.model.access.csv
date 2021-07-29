@@ -3,3 +3,5 @@ access_fame_dss,access.fame.dss,model_ceid_list,base.group_system,1,1,1,1
 access_fame_dss_1,access.fame.dss.1,model_project_list,base.group_system,1,1,1,1
 access_fame_dss_2,access.fame.dss.2,model_restrictive_tool,base.group_system,1,1,1,1
 access_fame_dss_3,access.fame.dss.3,model_vf_ceid,base.group_system,1,1,1,1
+access_fame_dss_4,access.fame.dss.4,model_execl_1,base.group_system,1,1,1,1
+access_fame_dss_5,access.fame.dss.5,model_execl_2,base.group_system,1,1,1,1
