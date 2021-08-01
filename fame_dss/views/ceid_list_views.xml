@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-
         <!-- record create: form -->
         <record id="ceid_list_form" model="ir.ui.view">
             <field name="name">ceid_list_form</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
-
                 <form>
                     <sheet>
                         <group>
                             <field name="area"/>
-                            <field name="ceid"/>
-
+                            <field name="name"/>
                         </group>
+                        <notebook>
+                            <page string="Ceid Avialabilty" name="ceid_avialabilty">
+                                <field
+                                    name="ceid_availablity"
+                                    widget="section_and_note_one2many"
+                                    mode="tree,kanban"
+                                >
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -28,7 +35,7 @@
 
                 <tree>
                     <field name="area"/>
-                    <field name="ceid"/>
+                    <field name="name"/>
 
                 </tree>
             </field>

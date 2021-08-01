@@ -13,7 +13,8 @@
         'views/restrictive_tool_views.xml',
         'views/vf_ceid_views.xml',
         'views/execl_1_views.xml',
-        'views/execl_2_views.xml'
+        'views/execl_2_views.xml',
+        'views/ceid_dashboards.xml'
     ],
     'installable': True,
     'application': True,

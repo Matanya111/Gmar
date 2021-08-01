@@ -7,8 +7,11 @@ class ceid_list(models.Model):
     _name = 'ceid.list'
     _description = 'engineers ceids list'
 
+    name = fields.Char("Ceid Name")
     area = fields.Char()
-    ceid = fields.Char()
+    ceid_availablity = fields.One2many('execl.1', 'ceid_list')
+
+
 
 #    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
 #    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")

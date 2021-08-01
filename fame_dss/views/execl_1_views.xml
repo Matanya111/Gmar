@@ -12,13 +12,12 @@
                     <sheet>
                         <group>
                             <field name="AREA"/>
-                            <field name="CEID"/>
+                            <field name="ceid_list"/>
                             <field name="MOM"/>
                             <field name="CHAMBER"/>
                             <field name="WW"/>
                             <field name="AVAILABILITY"/>
                             <field name="GOAL"/>
-
                         </group>
                     </sheet>
                 </form>
@@ -33,7 +32,7 @@
 
                 <tree>
                     <field name="AREA"/>
-                    <field name="CEID"/>
+                    <field name="ceid_list"/>
                     <field name="MOM"/>
                     <field name="CHAMBER"/>
                     <field name="WW"/>
@@ -50,7 +49,7 @@
 
             <field name="res_model">execl.1</field>
 
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
 
             <field name="context" eval="{'search_default_my_certificates': 1}"/>
             <field name="help" type="html">

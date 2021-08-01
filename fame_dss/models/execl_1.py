@@ -8,7 +8,7 @@ class execl_1(models.Model):
     _description = 'availability execl'
 
     AREA = fields.Char()
-    CEID = fields.Char()
+    ceid_list = fields.Many2one('ceid.list', "Ceid")
     MOM = fields.Char()
     CHAMBER = fields.Char()
     WW = fields.Char()
