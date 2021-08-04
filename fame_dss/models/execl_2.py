@@ -8,12 +8,12 @@ class execl_2(models.Model):
     _description = 'down time execl'
 
     AREA = fields.Char()
-    CEID = fields.Char()
+    ceid_list_2 = fields.Many2one('ceid.list.2', "Ceid")
     MOM = fields.Char()
     CHAMBER = fields.Char()
-    WW = fields.Char()
+    WW = fields.Integer()
     STATUS = fields.Char()
-    TIME = fields.Char()
+    TIME = fields.Float()
 
 #    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
 #    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")

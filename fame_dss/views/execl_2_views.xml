@@ -12,7 +12,7 @@
                     <sheet>
                         <group>
                             <field name="AREA"/>
-                            <field name="CEID"/>
+                            <field name="ceid_list_2"/>
                             <field name="MOM"/>
                             <field name="CHAMBER"/>
                             <field name="WW"/>
@@ -33,7 +33,7 @@
 
                 <tree>
                     <field name="AREA"/>
-                    <field name="CEID"/>
+                    <field name="ceid_list_2"/>
                     <field name="MOM"/>
                     <field name="CHAMBER"/>
                     <field name="WW"/>

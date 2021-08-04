@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <odoo>
+
     <data>
+
         <!-- record create: form -->
         <record id="ceid_list_form" model="ir.ui.view">
+
             <field name="name">ceid_list_form</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
+
                 <form>
                     <sheet>
+
+                        <div class="oe_button_box" name="button_box">
+
+                            <button type="object" name="action_show_ceid_avail"
+                              class="oe_stat_button" icon="fa-book" string="ceid availability 13 WW">
+                            </button>
+                            <button type="object" name="action_show_ch_avail"
+                              class="oe_stat_button" icon="fa-book" string="ch availability 4 WW">
+                            </button>
+                            <button type="object" name="action_show_13_4_avail"
+                              class="oe_stat_button" icon="fa-book" string="ceid Availability 13 and 4 WW">
+                            </button>
+                            <button type="object" name="action_show_ceid_dt"
+                              class="oe_stat_button" icon="fa-book" string="ceid down time pareto">
+                            </button>
+                            <button type="object" name="action_show_ch_dt"
+                              class="oe_stat_button" icon="fa-book" string="ch down time pareto">
+                            </button>
+
+                        </div>
+
                         <group>
                             <field name="area"/>
                             <field name="name"/>
                         </group>
+
                         <notebook>
                             <page string="Ceid Avialabilty" name="ceid_avialabilty">
                                 <field
@@ -22,27 +49,35 @@
                                 </field>
                             </page>
                         </notebook>
+
                     </sheet>
                 </form>
+
             </field>
+
         </record>
 
         <!-- schema: tree  -->
         <record id="ceid_list_tree" model="ir.ui.view">
+
             <field name="name">ceid_list.tree</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
 
                 <tree>
+
                     <field name="area"/>
                     <field name="name"/>
-
+                    
                 </tree>
+
             </field>
+
         </record>
 
         <!-- ???: action (form & tree) -->
         <record id="ceid_list_action" model="ir.actions.act_window">
+
             <field name="name">ceid list</field>
 
             <field name="res_model">ceid.list</field>
@@ -55,7 +90,9 @@
                 <p class="oe_view_nocontent_create">Create the first record</p>
 
             </field>
+
         </record>
+
     </data>
 
         <!-- menu item app: name and action -->
@@ -64,4 +101,5 @@
             action="ceid_list_action"
             sequence="100"
         />
+
 </odoo>

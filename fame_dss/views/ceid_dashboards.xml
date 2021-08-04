@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_ceid_graph" model="ir.ui.view">
+
+    <record id="view_ceid_graph_1" model="ir.ui.view">
             <field name="name">ceid.graph</field>
             <field name="model">execl.1</field>
             <field name="arch" type="xml">
                 <graph string="report" sample="1">
-                    <field name="WW"/>
-                    <field name="ceid_list"/>
-                    <field name="AVAILABILITY"/>
+                    <field name="WW" type="row"/>
+                    <field name="AVAILABILITY" type="measure"/>
                 </graph>
             </field>
     </record>
-    <record id="view_ceid_pivot" model="ir.ui.view">
+
+    <record id="view_ceid_pivot_2" model="ir.ui.view">
             <field name="name">ceid.pivot</field>
             <field name="model">execl.1</field>
             <field name="arch" type="xml">
                 <pivot string="report" sample="1">
-                    <field name="WW"/>
-                    <field name="ceid_list"/>
-                    <field name="AVAILABILITY"/>
+                    <field name="WW" type="row"/>
+                    <field name="ceid_list" type="measure"/>
+                    <field name="AVAILABILITY" type="measure"/>
                 </pivot>
             </field>
     </record>
+
+    <record id="view_ceid_pivot_3" model="ir.ui.view">
+            <field name="name">ceid.pivot</field>
+            <field name="model">execl.1</field>
+            <field name="arch" type="xml">
+                <pivot string="report" sample="1">
+                    <field name="WW" type="row"/>
+                    <field name="ceid_list" type="measure"/>
+                    <field name="AVAILABILITY" type="measure"/>
+                </pivot>
+            </field>
+    </record>
+
+    <record id="view_ceid_pivot_4" model="ir.ui.view">
+            <field name="name">ceid.pivot</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+                <pivot string="report" sample="1">
+                    <field name="WW" type="row"/>
+                    <field name="ceid_list_2" type="measure"/>
+                    <field name="STATUS" type="row"/>
+                    <field name="TIME" type="measure"/>
+                </pivot>
+            </field>
+    </record>
+
+    <record id="view_ceid_pivot_5" model="ir.ui.view">
+            <field name="name">ceid.pivot</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+                <pivot string="report" sample="1">
+                    <field name="WW" type="row"/>
+                    <field name="ceid_list_2" type="measure"/>
+                    <field name="STATUS" type="row"/>
+                    <field name="TIME" type="measure"/>
+                </pivot>
+            </field>
+    </record>
+
 </odoo>
