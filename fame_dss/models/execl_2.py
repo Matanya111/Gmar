@@ -8,7 +8,7 @@ class execl_2(models.Model):
     _description = 'down time execl'
 
     AREA = fields.Char()
-    ceid_list_2 = fields.Many2one('ceid.list.2', "Ceid")
+    ceid_list_2 = fields.Many2one('ceid.list', "Ceid")
     MOM = fields.Char()
     CHAMBER = fields.Char()
     WW = fields.Integer()

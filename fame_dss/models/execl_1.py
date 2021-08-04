@@ -12,6 +12,7 @@ class execl_1(models.Model):
     MOM = fields.Char()
     CHAMBER = fields.Char()
     WW = fields.Integer()
+    # AVAILABILITY = fields.Float()
     AVAILABILITY = fields.Float(group_operator="avg")
     GOAL = fields.Float()
 

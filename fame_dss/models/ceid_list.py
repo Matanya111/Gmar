@@ -7,10 +7,10 @@ class ceid_list(models.Model):
     _name = 'ceid.list'
     _description = 'engineers ceids list'
 
-    name = fields.Char("Ceid Name")
     area = fields.Char()
-    ceid_availablity = fields.One2many('execl.1', 'ceid_list')
-    ceid_availablity = fields.One2many('execl.2', 'ceid_list_2')
+    name = fields.Char("Ceid Name")
+    ceid_avail_1 = fields.One2many('execl.1', 'ceid_list')
+    ceid_avail_2 = fields.One2many('execl.2', 'ceid_list_2')
 
 
 
@@ -24,7 +24,7 @@ class ceid_list(models.Model):
             'views': [(avail_graph.id, 'graph')],
             'view_id': avail_graph.id,
             'target': 'new',
-            # 'domain': [('id', 'in', self.mrp_ids.ids)],
+            'domain': [('ceid_list', '=', self.id)],
             # 'context': dict(self._context, create=True, default_stock_id = self.id, default_origin = self.name),
         }
 

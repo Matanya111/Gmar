@@ -23,7 +23,7 @@
                               class="oe_stat_button" icon="fa-book" string="ch availability 4 WW">
                             </button>
                             <button type="object" name="action_show_13_4_avail"
-                              class="oe_stat_button" icon="fa-book" string="ceid Availability 13 and 4 WW">
+                              class="oe_stat_button" icon="fa-book" string="ceid availability 13 and 4 WW">
                             </button>
                             <button type="object" name="action_show_ceid_dt"
                               class="oe_stat_button" icon="fa-book" string="ceid down time pareto">
@@ -40,9 +40,9 @@
                         </group>
 
                         <notebook>
-                            <page string="Ceid Avialabilty" name="ceid_avialabilty">
+                            <page string="ww avialabilty" name="ceid_avail_1">
                                 <field
-                                    name="ceid_availablity"
+                                    name="ceid_avail_1"
                                     widget="section_and_note_one2many"
                                     mode="tree,kanban"
                                 >
@@ -68,14 +68,14 @@
 
                     <field name="area"/>
                     <field name="name"/>
-                    
+
                 </tree>
 
             </field>
 
         </record>
 
-        <!-- ???: action (form & tree) -->
+        <!-- action (form & tree) -->
         <record id="ceid_list_action" model="ir.actions.act_window">
 
             <field name="name">ceid list</field>
