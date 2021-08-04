@@ -12,9 +12,9 @@ class execl_1(models.Model):
     MOM = fields.Char()
     CHAMBER = fields.Char()
     WW = fields.Integer()
-    # AVAILABILITY = fields.Float()
     AVAILABILITY = fields.Float(group_operator="avg")
     GOAL = fields.Float()
+
 
 #    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
 #    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")

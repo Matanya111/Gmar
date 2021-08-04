@@ -35,7 +35,6 @@
                         </div>
 
                         <group>
-                            <field name="area"/>
                             <field name="name"/>
                         </group>
 
@@ -43,6 +42,17 @@
                             <page string="ww avialabilty" name="ceid_avail_1">
                                 <field
                                     name="ceid_avail_1"
+                                    widget="section_and_note_one2many"
+                                    mode="tree,kanban"
+                                >
+                                </field>
+                            </page>
+                        </notebook>
+
+                        <notebook>
+                            <page string="ww dt" name="ceid_avail_2">
+                                <field
+                                    name="ceid_avail_2"
                                     widget="section_and_note_one2many"
                                     mode="tree,kanban"
                                 >
@@ -66,7 +76,6 @@
 
                 <tree>
 
-                    <field name="area"/>
                     <field name="name"/>
 
                 </tree>
