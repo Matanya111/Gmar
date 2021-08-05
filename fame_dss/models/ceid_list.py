@@ -104,11 +104,28 @@ class ceid_list(models.Model):
         }
 
 
+    def action_show_is_ch(self):
+        ch_tree = self.env.ref('fame_dss.view_show_is_ch', raise_if_not_found=False)
+        chambers = self.ceid_avail_1.search([('ceid_list', '=', self.id)])
+        uniqe_ch = []
+        uniqe_ch_char = []
+        if chambers:
+            for c in chambers:
+                print('ssss', c['CHAMBER'])
+                if c['CHAMBER'] not in uniqe_ch_char:
+                    uniqe_ch_char.append(c['CHAMBER'])
+                    uniqe_ch.append(c.id)
+        print('unqqqqqqq', uniqe_ch)
 
-#    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
-#    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")
-#    sig_token = fields.Char()
-#
-#    def generate_signature(self):
-#        print("helllo")
 
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'execl.1',
+            'name': 'ceid is ch',
+            'view_mode': 'tree',
+            'views': [(ch_tree.id, 'tree')],
+            'view_id': ch_tree.id,
+            'target': 'new',
+            'domain': [('ceid_list', '=', self.id), ('id', 'in', uniqe_ch)],
+            # 'context': dict(self._context, create=True, default_stock_id = self.id, default_origin = self.name),
+        }

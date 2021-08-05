@@ -47,9 +47,6 @@
                                 >
                                 </field>
                             </page>
-                        </notebook>
-
-                        <notebook>
                             <page string="ww dt" name="ceid_avail_2">
                                 <field
                                     name="ceid_avail_2"

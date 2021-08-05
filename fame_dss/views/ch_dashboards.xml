@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_show_is_ch" model="ir.ui.view">
+            <field name="name">ceid.show_is_ch</field>
+            <field name="model">execl.1</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ceid_list"/>
+                    <field name="CHAMBER"/>
+                </tree>
+            </field>
+    </record>
+</odoo>
