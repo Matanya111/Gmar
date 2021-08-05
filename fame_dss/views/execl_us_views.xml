@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <data>
+
+        <!-- record create: form -->
+        <record id="execl_us_form" model="ir.ui.view">
+
+            <field name="name">execl_us_form</field>
+            <field name="model">execl.us</field>
+            <field name="arch" type="xml">
+
+                <form>
+                    <sheet>
+                        <group>
+
+                            <field name="AREA"/>
+                            <field name="ceid_list_4"/>
+                            <field name="MOM"/>
+                            <field name="CHAMBER"/>
+                            <field name="WW"/>
+                            <field name="AVAILABILITY"/>
+                            <field name="GOAL"/>
+
+                        </group>
+                    </sheet>
+                </form>
+
+            </field>
+
+        </record>
+
+        <!-- schema: tree  -->
+        <record id="execl_us_tree" model="ir.ui.view">
+
+            <field name="name">execl_us.tree</field>
+            <field name="model">execl.us</field>
+            <field name="arch" type="xml">
+
+                <tree>
+
+                    <field name="AREA"/>
+                    <field name="ceid_list_4"/>
+                    <field name="MOM"/>
+                    <field name="CHAMBER"/>
+                    <field name="WW"/>
+                    <field name="AVAILABILITY"/>
+                    <field name="GOAL"/>
+
+                </tree>
+
+            </field>
+
+        </record>
+
+        <!-- action (form & tree) -->
+        <record id="execl_us_action" model="ir.actions.act_window">
+
+            <field name="name">execl us</field>
+            <field name="res_model">execl.us</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="view_id" ref="fame_dss.execl_us_tree"/>
+            <field name="context" eval="{'search_default_my_certificates': 1}"/>
+            <field name="help" type="html">
+               <p class="oe_view_nocontent_create">Create the first record</p>
+            </field>
+
+        </record>
+
+    </data>
+
+        <!-- menu item app: name and action -->
+        <menuitem id="menu_execl_us"
+            name="execl us"
+            action="execl_us_action"
+            sequence="100"
+        />
+
+</odoo>

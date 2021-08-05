@@ -19,6 +19,15 @@
                             <button type="object" name="action_show_is_ch"
                               class="oe_stat_button" icon="fa-book" string="is ch">
                             </button>
+
+                            <button type="object" name="action_show_eu_ch"
+                              class="oe_stat_button" icon="fa-book" string="eu ch">
+                            </button>
+                            
+                            <button type="object" name="action_show_us_ch"
+                              class="oe_stat_button" icon="fa-book" string="us ch">
+                            </button>
+
                         </div>
 
                         <group>

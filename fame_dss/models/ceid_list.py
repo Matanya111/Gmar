@@ -10,6 +10,8 @@ class ceid_list(models.Model):
     name = fields.Char("Ceid Name")
     ceid_avail_1 = fields.One2many('execl.1', 'ceid_list')
     ceid_avail_2 = fields.One2many('execl.2', 'ceid_list_2')
+    ceid_avail_3 = fields.One2many('execl.eu', 'ceid_list_3')
+    ceid_avail_4 = fields.One2many('execl.us', 'ceid_list_4')
     last_4_weeks_avail = fields.Float(compute='_compute_last_4', store=True)
     last_13_weeks_avail = fields.Float(compute='_compute_last_13', store=True)
     goal = fields.Float(related="ceid_avail_1.GOAL")
@@ -111,13 +113,9 @@ class ceid_list(models.Model):
         uniqe_ch_char = []
         if chambers:
             for c in chambers:
-                print('ssss', c['CHAMBER'])
                 if c['CHAMBER'] not in uniqe_ch_char:
                     uniqe_ch_char.append(c['CHAMBER'])
                     uniqe_ch.append(c.id)
-        print('unqqqqqqq', uniqe_ch)
-
-
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'execl.1',
@@ -127,5 +125,48 @@ class ceid_list(models.Model):
             'view_id': ch_tree.id,
             'target': 'new',
             'domain': [('ceid_list', '=', self.id), ('id', 'in', uniqe_ch)],
-            # 'context': dict(self._context, create=True, default_stock_id = self.id, default_origin = self.name),
         }
+
+    def action_show_eu_ch(self):
+        ch_tree = self.env.ref('fame_dss.view_show_eu_ch', raise_if_not_found=False)
+        chambers = self.ceid_avail_3.search([('ceid_list_3', '=', self.id)])
+        uniqe_ch = []
+        uniqe_ch_char = []
+        if chambers:
+            for c in chambers:
+                if c['CHAMBER'] not in uniqe_ch_char:
+                    uniqe_ch_char.append(c['CHAMBER'])
+                    uniqe_ch.append(c.id)
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'execl.eu',
+            'name': 'ceid eu ch',
+            'view_mode': 'tree',
+            'views': [(ch_tree.id, 'tree')],
+            'view_id': ch_tree.id,
+            'target': 'new',
+            'domain': [('ceid_list_3', '=', self.id), ('id', 'in', uniqe_ch)],
+        }
+
+    def action_show_us_ch(self):
+        ch_tree = self.env.ref('fame_dss.view_show_us_ch', raise_if_not_found=False)
+        chambers = self.ceid_avail_4.search([('ceid_list_4', '=', self.id)])
+        uniqe_ch = []
+        uniqe_ch_char = []
+        if chambers:
+            for c in chambers:
+                if c['CHAMBER'] not in uniqe_ch_char:
+                    uniqe_ch_char.append(c['CHAMBER'])
+                    uniqe_ch.append(c.id)
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'execl.us',
+            'name': 'ceid us ch',
+            'view_mode': 'tree',
+            'views': [(ch_tree.id, 'tree')],
+            'view_id': ch_tree.id,
+            'target': 'new',
+            'domain': [('ceid_list_4', '=', self.id), ('id', 'in', uniqe_ch)],
+        }
+
+
