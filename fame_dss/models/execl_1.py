@@ -16,6 +16,7 @@ class execl_1(models.Model):
     GOAL = fields.Float()
 
 
+
 #    date_start = fields.Datetime(readonly=True, help="The date on which the certificate starts to be valid")
 #    date_end = fields.Datetime(readonly=True, help="The date on which the certificate expires")
 #    sig_token = fields.Char()

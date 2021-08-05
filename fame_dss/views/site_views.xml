@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l1ght_site_form_view" model="ir.ui.view" >
+        <field name="name">l1ght.site.form</field>
+        <field name="model">l1ght.site</field>
+        <field name="priority" eval="10" />
+        <field name="arch" type="xml">
+            <form string="Site"> 
+            <sheet>
+                <h1>
+                    <field name="name" widget="url" readonly="1"/>
+                </h1>
+                <group>
+                    <group>
+                        <field name="classification"/>
+                        <field name="address" readonly="1"/>
+                        <field name="collection_id" readonly="1"/>
+                        <field name="site_state" readonly="1"/>
+                        <field name="disabled_reason" string='Status Reason' readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="csam" readonly="1"/>
+                        <field name="partner_id" groups="l1ght_package.group_l1ght_internal" readonly="1"/>
+                        <field name="last_scan" readonly="1"/>
+                        <field name="next_scan" readonly="1"/>
+                        <field name="reviewed_status" attrs="{'invisible': [('classification', 'in', ['clean', 'unreachable', 'oos'])]}"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Scanning Activity" name="website_reports">
+                        <field
+                            name="digital_evidence_report"
+                            widget="section_and_note_one2many"
+                            mode="tree,kanban"
+                        >
+                            <tree
+                                default_order="scan_date desc"
+                                string="scan lines"
+                                editable="bottom"
+                            >
+                                <field name="detection_type"/>
+                                <field name="scan_date"/>
+                                <field name="report_date"/>
+                                <field name="site_scan_analysis_id" invisible="1"/>
+                                <button name="show_scan_analysis" type="object" icon="fa-eye" attrs="{'invisible': [('site_scan_analysis_id', '=', False)]}"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            </form> 
+        </field>  
+    </record>
+
+    <record id="l1ght_site_form_chatterbox_view" model="ir.ui.view" >
+        <field name="name">l1ght.site.chatterbox.form</field>
+        <field name="model">l1ght.site</field>
+        <field name="groups_id" eval="[(4, ref('l1ght_package.group_l1ght_internal'))]"/>
+        <field name="inherit_id" ref="l1ght_package.l1ght_site_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>  
+    </record>
+
+    <record id="l1ght_site_form_permission_view" model="ir.ui.view" >
+        <field name="name">l1ght.site.permission.form</field>
+        <field name="model">l1ght.site</field>
+        <field name="groups_id" eval="[(4, ref('l1ght_package.group_l1ght_internal'))]"/>
+        <field name="inherit_id" ref="l1ght_package.l1ght_site_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='address']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='collection_id']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='site_state']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='disabled_reason']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='csam']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='last_scan']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='next_scan']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+        </field>  
+    </record>
+
+    <record id="l1ght_site_tree_view" model="ir.ui.view" >
+        <field name="name">l1ght.site.tree</field>
+        <field name="model">l1ght.site</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1" duplicate="false" sample="1"> 
+                   <button name="open_site_url" type="object" icon="fa-sign-in"/>
+                   <field name="name" readonly="1"/>
+                   <field name="address" optional="show" readonly="1"/>
+                   <field name="partner_id" optional="show" readonly="1" groups="l1ght_package.group_l1ght_internal"/>
+                   <field name="classification" decoration-success="classification == 'clean'" decoration-danger="classification in ['porn', 'hate', 'escort', 'toxic', 'sexual content']" decoration-muted="classification in ['unreachable', 'oos', 'disabled']" widget="radio"/>
+                   <field name="csam" optional="show" readonly="1"/>
+                   <field name="site_state"  readonly="1" decoration-success="site_state == 'active'" decoration-danger="site_state in ['inactive', 'unreachable']" widget="badge"/>
+                   <field name="last_scan" readonly="1"/>
+                   <field name="next_scan" readonly="1"/>
+                   <field name="report_date" readonly="1"/>
+                   <field name="collection_id" optional="show" readonly="1"/>
+            </tree> 
+        </field>  
+    </record>
+
+    <record id="l1ght_detection_tree_view" model="ir.ui.view" >
+        <field name="name">l1ght.detection.tree</field>
+        <field name="model">l1ght.site</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1" duplicate="false" sample="1"> 
+                   <button name="open_site_url" type="object" icon="fa-sign-in"/>
+                   <field name="name" readonly="1"/>
+                   <!-- <button name="open_site" string="Go To Site"/> -->
+                   <field name="address" optional="show" readonly="1"/>
+                   <field name="partner_id" optional="show" readonly="1" groups="l1ght_package.group_l1ght_internal"/>
+                   <field name="classification" decoration-success="classification == 'clean'" decoration-danger="classification in ['porn', 'hate', 'escort', 'toxic', 'sexual content']" decoration-muted="classification in ['unreachable', 'oos', 'disabled']" widget="radio"/>
+                   <field name="csam" optional="show" readonly="1"/>
+                   <field name="site_state"  readonly="1" decoration-success="site_state == 'active'" decoration-danger="site_state in ['inactive', 'unreachable']" widget="badge"/>
+                   <field name="last_scan" readonly="1"/>
+                   <field name="next_scan" readonly="1"/>
+                   <field name="report_date" readonly="1"/>
+                   <field name="collection_id" optional="show" readonly="1"/>
+                   <field name="reviewed_status" optional="show" decoration-success="reviewed_status == 'review'" decoration-info="reviewed_status == 'new'" widget="radio"/>
+            </tree> 
+        </field>  
+    </record>
+
+    <menuitem name="L1ght" id="menu_l1ght_root" sequence="40"/>
+
+    <record model="ir.actions.act_window" id="action_show_sites">
+        <field name="name">Sites</field>
+        <field name="res_model">l1ght.site</field>
+        <field name="view_id" ref="l1ght_package.l1ght_site_tree_view"/>
+        <field name="context">{ 'tree_view_ref':'l1ght_site_tree_view'}</field>
+        <field name="view_mode">tree,form,pivot,graph,dashboard</field>
+    </record>
+
+
+    <menuitem
+        id="l1ght_site_menu_views"
+        name="Sites"
+        parent="l1ght_package.menu_l1ght_root" 
+        sequence="2"
+        action="action_show_sites"/>
+
+    <record model="ir.actions.act_window" id="action_show_detections">
+        <field name="name">Detections</field>
+        <field name="res_model">l1ght.site</field>
+        <field name="view_id" ref="l1ght_package.l1ght_detection_tree_view"/>
+        <field name="context">{ 'tree_view_ref':'l1ght_detection_tree_view'}</field>
+        <field name="domain">[('classification', 'in', ['porn', 'hate', 'escort', 'toxic', 'sexual content'])]</field> 
+        <field name="view_mode">tree,form,pivot,graph,dashboard</field>
+    </record>
+
+
+    <menuitem
+        id="l1ght_detection_menu_views"
+        name="Detections"
+        parent="l1ght_package.menu_l1ght_root" 
+        sequence="5"
+        action="action_show_detections"/>
+
+
+    <record model="ir.actions.act_window" id="open_board_site">
+        <field name="name">Sites Dashboard</field>
+        <field name="res_model">l1ght.site</field>
+        <field name="view_mode">dashboard</field>
+    </record>
+
+    <menuitem
+        id="l1ght_dashboard_menu_views"
+        name="Home"
+        parent="l1ght_package.menu_l1ght_root" 
+        sequence="1"
+        action="open_board_site"/>
+</odoo>
+
+

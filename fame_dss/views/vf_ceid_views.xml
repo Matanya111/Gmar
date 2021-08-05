@@ -1,44 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <odoo>
+
     <data>
 
         <!-- record create: form -->
         <record id="vf_ceid_form" model="ir.ui.view">
+
             <field name="name">vf_ceid_form</field>
-            <field name="model">vf.ceid</field>
+            <field name="model">ceid.list</field>
             <field name="arch" type="xml">
 
                 <form>
                     <sheet>
-                        <group>
-                            <field name="area"/>
-                            <field name="ceid"/>
 
+                        <div class="oe_button_box" name="button_box">
+
+                            <button type="object" name="action_show_ceid_avail"
+                              class="oe_stat_button" icon="fa-book" string="ceid availability 13 WW">
+                            </button>
+                            <button type="object" name="action_show_ch_avail"
+                              class="oe_stat_button" icon="fa-book" string="ch availability 4 WW">
+                            </button>
+                            <button type="object" name="action_show_13_4_avail"
+                              class="oe_stat_button" icon="fa-book" string="ceid availability 13 and 4 WW">
+                            </button>
+                        </div>
+
+                        <group>
+                            <field name="name"/>
                         </group>
+
+                        <!-- <notebook>
+                            <page string="ww avialabilty" name="ceid_avail_1">
+                                <field
+                                    name="ceid_avail_1"
+                                    widget="section_and_note_one2many"
+                                    mode="tree,kanban"
+                                >
+                                </field>
+                            </page>
+                        </notebook>
+
+                        <notebook>
+                            <page string="ww dt" name="ceid_avail_2">
+                                <field
+                                    name="ceid_avail_2"
+                                    widget="section_and_note_one2many"
+                                    mode="tree,kanban"
+                                >
+                                </field>
+                            </page>
+                        </notebook> -->
+
                     </sheet>
                 </form>
+
             </field>
+
         </record>
 
         <!-- schema: tree  -->
         <record id="vf_ceid_tree" model="ir.ui.view">
-            <field name="name">vf_ceid.tree</field>
-            <field name="model">vf.ceid</field>
+
+            <field name="name">ceid_list.tree</field>
+            <field name="model">ceid.list</field>
             <field name="arch" type="xml">
 
                 <tree>
-                    <field name="area"/>
-                    <field name="ceid"/>
+
+                    <field name="name"/>
 
                 </tree>
+
             </field>
+
         </record>
 
-        <!-- ???: action (form & tree) -->
+        <!-- action (form & tree) -->
         <record id="vf_ceid_action" model="ir.actions.act_window">
+
             <field name="name">vf ceid</field>
 
-            <field name="res_model">vf.ceid</field>
+            <field name="res_model">ceid.list</field>
 
             <field name="view_mode">tree,form</field>
 
@@ -48,7 +92,9 @@
                 <p class="oe_view_nocontent_create">Create the first record</p>
 
             </field>
+
         </record>
+
     </data>
 
         <!-- menu item app: name and action -->
@@ -57,4 +103,5 @@
             action="vf_ceid_action"
             sequence="100"
         />
+
 </odoo>

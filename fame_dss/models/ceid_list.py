@@ -7,12 +7,12 @@ class ceid_list(models.Model):
     _name = 'ceid.list'
     _description = 'engineers ceids list'
 
-    #area = fields.Char()
     name = fields.Char("Ceid Name")
     ceid_avail_1 = fields.One2many('execl.1', 'ceid_list')
     ceid_avail_2 = fields.One2many('execl.2', 'ceid_list_2')
     last_4_weeks_avail = fields.Float(compute='_compute_last_4', store=True)
     last_13_weeks_avail = fields.Float(compute='_compute_last_13', store=True)
+    goal = fields.Float(related="ceid_avail_1.GOAL")
 
     @api.depends('ceid_avail_1')
     def _compute_last_4(self):

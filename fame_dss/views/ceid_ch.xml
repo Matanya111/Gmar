@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_ceid_avail" model="ir.ui.view">
+    <record id="view_is_ch" model="ir.ui.view">
             <field name="name">ceid.graph</field>
             <field name="model">execl.1</field>
             <field name="arch" type="xml">
                 <graph string="report" sample="1">
-                    <field name="WW" type="row"/>
-                    <field name="AVAILABILITY" type="measure"/>
+                    <field name="CHAMBER" type="row"/>
+                    <field name="AVAILABILITY" type="measure"/> 
                 </graph>
             </field>
     </record>
+
+
+
 
     <record id="view_ch_avail" model="ir.ui.view">
             <field name="name">ceid.graph</field>
@@ -47,6 +50,11 @@
                 </form>
             </field>
     </record>
+
+
+
+
+
 
     <record id="view_ceid_dt" model="ir.ui.view">
             <field name="name">ceid.graph</field>

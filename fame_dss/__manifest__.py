@@ -11,10 +11,11 @@
         'views/ceid_list_views.xml',
         'views/project_list_views.xml',
         'views/restrictive_tool_views.xml',
-        'views/vf_ceid_views.xml',
+        # 'views/vf_ceid_views.xml',
         'views/execl_1_views.xml',
         'views/execl_2_views.xml',
-        'views/ceid_dashboards.xml'
+        'views/ceid_dashboards.xml',
+        'views/ceid_ch.xml'
     ],
     'installable': True,
     'application': True,
