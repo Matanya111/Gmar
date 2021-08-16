@@ -6,38 +6,30 @@
 
         <!-- record create: form -->
         <record id="execl_2_form" model="ir.ui.view">
-
             <field name="name">execl_2_form</field>
             <field name="model">execl.2</field>
             <field name="arch" type="xml">
-
                 <form>
                     <sheet>
                         <group>
-
                             <field name="AREA"/>
                             <field name="ceid_list_2"/>
                             <field name="MOM"/>
                             <field name="CHAMBER"/>
                             <field name="WW"/>
                             <field name="STATUS"/>
-                            <field name="TIME"/>
-                        
+                            <field name="TIME"/>                
                         </group>
                     </sheet>
                 </form>
-
             </field>
-
         </record>
 
         <!-- schema: tree  -->
         <record id="execl_2_tree" model="ir.ui.view">
-
             <field name="name">execl_2.tree</field>
             <field name="model">execl.2</field>
             <field name="arch" type="xml">
-
                 <tree>
                     <field name="AREA"/>
                     <field name="ceid_list_2"/>
@@ -47,14 +39,11 @@
                     <field name="STATUS"/>
                     <field name="TIME"/>
                 </tree>
-
             </field>
-
         </record>
 
         <!-- action (form & tree) -->
         <record id="execl_2_action" model="ir.actions.act_window">
-
             <field name="name">execl 2</field>
             <field name="res_model">execl.2</field>
             <field name="view_mode">tree,form</field>
@@ -69,7 +58,7 @@
 
         <!-- menu item app: name and action -->
         <menuitem id="menu_execl_2"
-            name="execl 2"
+            name="execl 2 dt"
             action="execl_2_action"
             sequence="100"
         />

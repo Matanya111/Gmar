@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-        <record id="ceid_list_restrictive_tool_tree" model="ir.ui.view">
 
-            <field name="name">ceid_list_restrictive_tool.tree</field>
-            <field name="model">ceid.list</field>
-            <field name="arch" type="xml">
+    <record id="ceid_list_restrictive_tool_tree" model="ir.ui.view">
+        <field name="name">ceid_list_restrictive_tool.tree</field>
+        <field name="model">ceid.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="last_4_weeks_avail"/>
+                <field name="last_13_weeks_avail"/>
+                <field name="goal"/>
+            </tree>
+        </field>
+    </record>
 
-                <tree>
+    <record id="restrictive_tool_action" model="ir.actions.act_window">
+        <field name="name">restrictive tools</field>
+        <field name="res_model">ceid.list</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="fame_dss.ceid_list_restrictive_tool_tree"/>
+        <field name="context">{ 'tree_view_ref':'ceid_list_restrictive_tool_tree'}</field>
+        <field name="domain">[('goal', '>', 0.8)]</field> 
+    </record>
 
-                    <field name="name"/>
-                    <field name="last_4_weeks_avail"/>
-                    <field name="last_13_weeks_avail"/>
-                    <field name="goal"/>
-                </tree>
+    <!-- menu item app: name and action -->
+    <menuitem id="menu_restrictive_tool"
+        name="3 restrictive tool"
+        action="restrictive_tool_action"
+        sequence="100"
+    />
 
-            </field>
-
-        </record>
-
-        <record id="restrictive_tool_action" model="ir.actions.act_window">
-            <field name="name">restrictive tools</field>
-            <field name="res_model">ceid.list</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="fame_dss.ceid_list_restrictive_tool_tree"/>
-            <field name="context">{ 'tree_view_ref':'ceid_list_restrictive_tool_tree'}</field>
-            <field name="domain">[('goal', '>', 0.8)]</field> 
-        </record>
-
-        <!-- menu item app: name and action -->
-        <menuitem id="menu_restrictive_tool"
-            name="restrictive tool"
-            action="restrictive_tool_action"
-            sequence="100"
-        />
 </odoo>

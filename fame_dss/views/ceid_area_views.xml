@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <!-- record create: form -->
+        <record id="ceid_area_list_form" model="ir.ui.view">
+            <field name="name">ceid_area_list_form</field>
+            <field name="model">ceid.area</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="excel_1_ceid"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- schema: tree  -->
+        <record id="ceid_area_list_tree" model="ir.ui.view">
+            <field name="name">ceid_area_list.tree</field>
+            <field name="model">ceid.area</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- action (form & tree) -->
+        <record id="ceid_area_list_action" model="ir.actions.act_window">
+            <field name="name">ceid area_list</field>
+            <field name="res_model">ceid.area</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+        <!-- menu item app: name and action -->
+        <menuitem id="menu_ceid_area_reports"
+            name="area ceid reports"
+            action="ceid_area_list_action"
+            sequence="102"
+        />
+
+</odoo>

@@ -1,4 +1,3 @@
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'fame_dss',
     'version': '0.1',
@@ -16,8 +15,7 @@
         'views/execl_2_views.xml',
         'views/execl_eu_views.xml',
         'views/execl_us_views.xml',
-        'views/ceid_dashboards.xml',
-        'views/ch_dashboards.xml'
+        'views/ceid_area_views.xml'
     ],
     'installable': True,
     'application': True,

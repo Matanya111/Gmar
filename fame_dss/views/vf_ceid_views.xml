@@ -6,14 +6,11 @@
 
         <!-- record create: form -->
         <record id="vf_ceid_form" model="ir.ui.view">
-
             <field name="name">vf_ceid_form</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
-
                 <form>
                     <sheet>
-
                         <div class="oe_button_box" name="button_box">
 
                             <button type="object" name="action_show_is_ch"
@@ -36,9 +33,7 @@
 
                     </sheet>
                 </form>
-
             </field>
-
         </record>
 
         <!-- action (form & tree) -->
@@ -47,17 +42,51 @@
             <field name="res_model">ceid.list</field>
             <field name="view_mode">tree,form</field>
             <field name="view_ids" eval="[(5, 0, 0),
-    (0, 0, {'view_mode': 'tree', 'view_id': ref('fame_dss.ceid_list_tree')}),
-    (0, 0, {'view_mode': 'form', 'view_id': ref('fame_dss.vf_ceid_form')})]"/>
+                                        (0, 0, {'view_mode': 'tree', 'view_id': ref('fame_dss.ceid_list_tree')}),
+                                        (0, 0, {'view_mode': 'form', 'view_id': ref('fame_dss.vf_ceid_form')})]"/>
         </record>
 
     </data>
 
         <!-- menu item app: name and action -->
         <menuitem id="menu_vf_ceid"
-            name="vf ceid"
+            name="4 vf ceid"
             action="vf_ceid_action"
             sequence="100"
         />
+
+        <!-- three inter tables -->
+        <record id="view_show_is_ch" model="ir.ui.view">
+                <field name="name">ceid.show_is_ch</field>
+                <field name="model">execl.1</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="ceid_list"/>
+                        <field name="CHAMBER"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_show_eu_ch" model="ir.ui.view">
+                <field name="name">ceid.show_eu_ch</field>
+                <field name="model">execl.eu</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="ceid_list_3"/>
+                        <field name="CHAMBER"/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="view_show_us_ch" model="ir.ui.view">
+                <field name="name">ceid.show_us_ch</field>
+                <field name="model">execl.us</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="ceid_list_4"/>
+                        <field name="CHAMBER"/>
+                    </tree>
+                </field>
+        </record>
 
 </odoo>

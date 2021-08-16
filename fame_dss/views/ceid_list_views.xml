@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-
     <data>
-
         <!-- record create: form -->
         <record id="ceid_list_form" model="ir.ui.view">
-
             <field name="name">ceid_list_form</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
-
                 <form>
                     <sheet>
-
                         <div class="oe_button_box" name="button_box">
 
                             <button type="object" name="action_show_ceid_avail"
@@ -56,56 +51,112 @@
                                 </field>
                             </page>
                         </notebook>
-
                     </sheet>
                 </form>
-
             </field>
-
         </record>
         
         <!-- schema: tree  -->
         <record id="ceid_list_tree" model="ir.ui.view">
-
             <field name="name">ceid_list.tree</field>
             <field name="model">ceid.list</field>
             <field name="arch" type="xml">
-
                 <tree>
-
                     <field name="name"/>
-
                 </tree>
-
             </field>
-
         </record>
 
         <!-- action (form & tree) -->
         <record id="ceid_list_action" model="ir.actions.act_window">
-
             <field name="name">ceid list</field>
-
             <field name="res_model">ceid.list</field>
-
             <field name="view_mode">tree,form</field>
-
             <field name="context" eval="{'search_default_my_certificates': 1}"/>
             <field name="help" type="html">
-
-                <p class="oe_view_nocontent_create">Create the first record</p>
-
+                <p class="oe_view_nocontent_create">Create the first record</p>               
             </field>
-
         </record>
-
     </data>
 
         <!-- menu item app: name and action -->
         <menuitem id="menu_ceid_reports"
-            name="ceid reports"
+            name="1 ceid reports"
             action="ceid_list_action"
             sequence="100"
         />
+
+
+
+    <!-- five inter graphes -->
+    <record id="view_ceid_avail" model="ir.ui.view">
+            <field name="name">ceid.graph</field>
+            <field name="model">execl.1</field>
+            <field name="arch" type="xml">
+                <graph string="report" sample="1">
+                    <field name="WW" type="row"/>
+                    <field name="AVAILABILITY" type="measure"/>
+                </graph>
+            </field>
+    </record>
+
+    <record id="view_ch_avail" model="ir.ui.view">
+            <field name="name">ceid.graph</field>
+            <field name="model">execl.1</field>
+            <field name="arch" type="xml">
+                <graph string="report" sample="1">
+                    <field name="CHAMBER" type="row"/>
+                    <field name="AVAILABILITY" type="measure"/> 
+                </graph>
+            </field>
+    </record>
+
+    <record id="view_4_13_weeks" model="ir.ui.view">
+            <field name="name">view.4.13.weeks</field>
+            <field name="model">ceid.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="last_4_weeks_avail"/>                
+                            </group>
+                            <group>
+                                <field name="last_13_weeks_avail"/>
+                            </group>
+                            <group>
+                                <field name="goal"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record id="view_ceid_dt" model="ir.ui.view">
+            <field name="name">ceid.graph</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+                <graph string="report" sample="1">
+                    <field name="STATUS" type="row"/>
+                    <field name="TIME" type="measure"/>
+                </graph>
+            </field>
+    </record>
+
+    <record id="view_ch_dt" model="ir.ui.view">
+            <field name="name">ceid.graph</field>
+            <field name="model">execl.2</field>
+            <field name="arch" type="xml">
+                <graph string="report" sample="1">
+                    <field name="CHAMBER" type="row"/>
+                    <field name="STATUS" type="row"/>
+                    <field name="TIME" type="measure"/>
+                </graph>
+            </field>
+    </record>
 
 </odoo>

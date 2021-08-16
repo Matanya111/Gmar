@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from odoo import _, api, fields, models, tools
 
 class ceid_list(models.Model):
@@ -15,6 +12,11 @@ class ceid_list(models.Model):
     last_4_weeks_avail = fields.Float(compute='_compute_last_4', store=True)
     last_13_weeks_avail = fields.Float(compute='_compute_last_13', store=True)
     goal = fields.Float(related="ceid_avail_1.GOAL")
+    area = fields.Char(related="ceid_avail_1.AREA.name")
+
+
+
+# module 1:
 
     @api.depends('ceid_avail_1')
     def _compute_last_4(self):
@@ -35,7 +37,8 @@ class ceid_list(models.Model):
             reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
             record.last_13_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
             print(record.last_13_weeks_avail)
-            
+
+
     def action_show_ceid_avail(self):
         avail_graph = self.env.ref('fame_dss.view_ceid_avail', raise_if_not_found=False)
         return {
@@ -90,7 +93,7 @@ class ceid_list(models.Model):
             'domain': [('ceid_list_2', '=', self.id)],
             # 'context': dict(self._context, create=True, default_stock_id = self.id, default_origin = self.name),
         }
-
+        
     def action_show_ch_dt(self):
         avail_graph = self.env.ref('fame_dss.view_ch_dt', raise_if_not_found=False)
         return {
@@ -105,6 +108,9 @@ class ceid_list(models.Model):
             # 'context': dict(self._context, create=True, default_stock_id = self.id, default_origin = self.name),
         }
 
+
+
+# module 4:
 
     def action_show_is_ch(self):
         ch_tree = self.env.ref('fame_dss.view_show_is_ch', raise_if_not_found=False)
