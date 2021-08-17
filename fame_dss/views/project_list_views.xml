@@ -18,6 +18,7 @@
                             <field name="summary_and_decisions"/>
                             <field name="eng"/>
                             <field name="last_update"/>
+                            <button name="create_event" type="object" string="Create Event"/>
                         </group>
                     </sheet>
                 </form>

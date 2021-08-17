@@ -9,10 +9,26 @@ class ceid_list(models.Model):
     ceid_avail_2 = fields.One2many('execl.2', 'ceid_list_2')
     ceid_avail_3 = fields.One2many('execl.eu', 'ceid_list_3')
     ceid_avail_4 = fields.One2many('execl.us', 'ceid_list_4')
-    last_4_weeks_avail = fields.Float(compute='_compute_last_4', store=True)
-    last_13_weeks_avail = fields.Float(compute='_compute_last_13', store=True)
+    last_4_weeks_avail = fields.Float(compute='_compute_last_4', store=True, default=0)
+    last_13_weeks_avail = fields.Float(compute='_compute_last_13', store=True, default=0)
     goal = fields.Float(related="ceid_avail_1.GOAL")
+    project_num = fields.Float(compute="_compute_project_num")
+    projects = fields.One2many('project.list', 'ceid')
     area = fields.Char(related="ceid_avail_1.AREA.name")
+    is_goal = fields.Boolean(compute="_compute_is_goal", store=True)
+
+    @api.depends('last_4_weeks_avail', 'goal')
+    def _compute_is_goal(self):
+        for record in self:
+            if (record.last_4_weeks_avail < record.goal):
+                record.is_goal = True
+            else:
+                record.is_goal = False
+
+    @api.depends('projects')
+    def _compute_project_num(self):
+        for record in self:
+            record.project_num = len(self.env['project.list'].search([('ceid', '=', record.id)]))
 
 
 
@@ -21,22 +37,24 @@ class ceid_list(models.Model):
     @api.depends('ceid_avail_1')
     def _compute_last_4(self):
         for record in self:
-            avails = record.ceid_avail_1.search([('ceid_list', '=', self.id)], order='WW desc')
-            latest_week = avails[0]['WW']
-            latest_weeks = [latest_week, latest_week - 1, latest_week - 2, latest_week - 3]
-            reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
-            record.last_4_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
-            print(record.last_4_weeks_avail)
+            avails = record.ceid_avail_1.search([('ceid_list', '=', record.id)], order='WW desc')
+            if avails:
+                latest_week = avails[0]['WW']
+                latest_weeks = [latest_week, latest_week - 1, latest_week - 2, latest_week - 3]
+                reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
+                record.last_4_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
+                print(record.last_4_weeks_avail)
 
     @api.depends('ceid_avail_1')
     def _compute_last_13(self):
         for record in self:
-            avails = record.ceid_avail_1.search([('ceid_list', '=', self.id)], order='WW desc')
-            latest_week = avails[0]['WW']
-            latest_weeks = [latest_week, latest_week - 1, latest_week - 2, latest_week - 3, latest_week - 4, latest_week - 5, latest_week - 6, latest_week - 7, latest_week - 9, latest_week - 10, latest_week - 11, latest_week - 12]
-            reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
-            record.last_13_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
-            print(record.last_13_weeks_avail)
+            avails = record.ceid_avail_1.search([('ceid_list', '=', record.id)], order='WW desc')
+            if avails:
+                latest_week = avails[0]['WW']
+                latest_weeks = [latest_week, latest_week - 1, latest_week - 2, latest_week - 3, latest_week - 4, latest_week - 5, latest_week - 6, latest_week - 7, latest_week - 9, latest_week - 10, latest_week - 11, latest_week - 12]
+                reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
+                record.last_13_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
+                print(record.last_13_weeks_avail)
 
 
     def action_show_ceid_avail(self):

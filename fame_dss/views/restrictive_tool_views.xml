@@ -10,6 +10,7 @@
                 <field name="last_4_weeks_avail"/>
                 <field name="last_13_weeks_avail"/>
                 <field name="goal"/>
+                <field name="project_num"/>
             </tree>
         </field>
     </record>
@@ -20,7 +21,7 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="fame_dss.ceid_list_restrictive_tool_tree"/>
         <field name="context">{ 'tree_view_ref':'ceid_list_restrictive_tool_tree'}</field>
-        <field name="domain">[('goal', '>', 0.8)]</field> 
+        <field name="domain">[('is_goal', '=', True)]</field> 
     </record>
 
     <!-- menu item app: name and action -->
