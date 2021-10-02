@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-    <data>
-        <!-- record create: form -->
-        <!-- <record id="ceid_area_list_form" model="ir.ui.view">
-            <field name="name">ceid_area_list_form</field>
-            <field name="model">ceid.area</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                        </group>
-
-                        <notebook>
-                            <page string="ceid's" name="ceids">
-                                <field
-                                    name="lists_ceid"
-                                    widget="section_and_note_one2many"
-                                    mode="tree,kanban"
-                                >
-                                </field>
-                            </page>
-                        </notebook>
-                    </sheet>
+        <record id="view_verify_user" model="ir.ui.view">
+              <field name="name">verify_user_view</field>
+              <field name="model">verify_user</field>
+              <field name="arch" type="xml">
+                <form string="Verify User Login">
+                    <field invisible="1" name="state"/>
+                    <field name="name" invisible="1"/>
+                    <group states="choose" string="Please Enter your user credentials:">
+                        <field name="user_name"/>
+                        <field name="pass_name" password="True"/>
+                    </group>
+                    <div states="get">
+                        <h2>Verification Complete</h2>
+                        <p>You can now enter your area.
+                        To enter, please click here:<button name="open_area" string="Open Area" type="object"/></p>
+                    </div>
+                    <footer states="choose">
+                        <button name="verify" string="Verify"  type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                    <footer states="get">
+                        <button special="cancel" string="Close" type="object" class="btn-primary"/>
+                    </footer>
                 </form>
-            </field>
-        </record> -->
-        
+              </field>
+        </record>
+    <data>
         <!-- schema: tree  -->
         <record id="ceid_area_list_tree" model="ir.ui.view">
             <field name="name">ceid_area_list.tree</field>
@@ -35,7 +35,9 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <button name="action_show_ceid_by_area" type="object" icon="fa-sign-in"/>
+                    <field name="is_verified" invisible="1"/>
+                    <button name="action_verify_user" type="object" icon="fa-pencil-square"/>
+                    <button name="action_show_ceid_by_area" type="object" icon="fa-sign-in" attrs="{'invisible': [('is_verified', '=', False)]}"/>
                 </tree>
             </field>
         </record>
@@ -45,15 +47,12 @@
             <field name="name">ceid area_list</field>
             <field name="res_model">ceid.area</field>
             <field name="view_mode">tree</field>
-            <!-- <field name="view_ids" eval="[(5, 0, 0),
-                            (0, 0, {'view_mode': 'tree', 'view_id': ref('fame_dss.ceid_area_list_tree')}),
-                            (0, 0, {'view_mode': 'form', 'view_id': ref('fame_dss.ceid_area_list_form')})]"/> -->
         </record>
     </data>
 
         <!-- menu item app: name and action -->
         <menuitem id="menu_ceid_area_reports"
-            name="area ceid reports"
+            name="1 area ceid reports"
             action="ceid_area_list_action"
             sequence="102"
         />

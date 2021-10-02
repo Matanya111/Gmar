@@ -82,7 +82,7 @@
 
         <!-- menu item app: name and action -->
         <menuitem id="menu_ceid_reports"
-            name="1 ceid reports"
+            name="ceid reports"
             action="ceid_list_action"
             sequence="100"
         />

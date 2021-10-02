@@ -44,6 +44,9 @@ class ceid_list(models.Model):
                 reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
                 record.last_4_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
                 print(record.last_4_weeks_avail)
+            else:
+                record.last_4_weeks_avail = 0
+
 
     @api.depends('ceid_avail_1')
     def _compute_last_13(self):
@@ -55,6 +58,8 @@ class ceid_list(models.Model):
                 reports = record.ceid_avail_1.search([('WW', 'in', latest_weeks), ('ceid_list', '=', self.id)])
                 record.last_13_weeks_avail = sum(report.AVAILABILITY for report in reports) / len(reports)
                 print(record.last_13_weeks_avail)
+            else:
+                record.last_13_weeks_avail = 0
 
 
     def action_show_ceid_avail(self):
